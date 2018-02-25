@@ -90,7 +90,8 @@ public class FormationController : MonoBehaviour {
 
 		//	If all of the enemy ships are dead, then we respawn them
 		if (AllMembersDead ()) {
-			SpawnUntilFull ();	//	Previously SpawnEnemies ();
+			SpawnUntilFull ();
+            GameObject.Find("DeathStarFormation").GetComponent<DeathStarFormationController>().SpawnUntilFull();
 		}
 	}
 

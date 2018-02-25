@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour {
+
 	public GameObject projectile;			//	The object we use to instantiate the enemy's laser beam
 	public float health = 150f;				//	The enemy's health
 	public float projectileSpeed = 10f;		//	The speed of the enemy's laser beam

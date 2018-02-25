@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
 	public float speed = 15.0f;		//	The speed at which the ship is moving
@@ -10,6 +11,7 @@ public class PlayerController : MonoBehaviour {
 	public float firingRate = 0.2f;	//	How fast we can instantiate our laser beam
 	public float health = 250f;		//	Our ships health
 	public AudioClip fireSound;		//	Sound played whenever the player fires
+    public Text text;
 
 	private Rigidbody2D rgb;		//	A linkt to our beam rigid body
 
@@ -23,6 +25,7 @@ public class PlayerController : MonoBehaviour {
 		float distance = transform.position.z - Camera.main.transform.position.z;
 		Vector3 leftmost = Camera.main.ViewportToWorldPoint(new Vector3(0,0,distance));
 		Vector3 rightmost = Camera.main.ViewportToWorldPoint(new Vector3(1,0,distance));
+        text.text = health.ToString();
 
 		//	We user the WorldPoint coordinates of our scene to set the boundaries for our ship
 		//	horizontal movement.  We use a padding so the ship never touches the screen edge.
@@ -93,7 +96,8 @@ public class PlayerController : MonoBehaviour {
 		if (missile) {
 			health -= missile.getDamage ();
 			missile.Hit ();  	// The missile is destroyed upon collision with our ship.
-			if (health <= 0) {
+            text.text = health.ToString();
+            if (health <= 0) {
 				Die ();
 			}
 		}
